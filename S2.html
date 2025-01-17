@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffefd5;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            width: 80%;
+            max-width: 500px;
+            animation: bounce 2s infinite;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #ff6f61;
+            color: white;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #ff4a35;
+        }
+        h1 {
+            font-size: 2em;
+            color: #ffffff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        #slide3 h1 {
+            animation: pop 1.5s ease-in-out infinite;
+            position: relative;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        @keyframes pop {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .emoji {
+            font-size: 3em;
+            margin: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slide active" id="slide1">
+            <h1 class="emoji">🎉 Hey, I have a surprise for you! 🎁</h1>
+            <button onclick="nextSlide()">Next</button>
+        </div>
+
+        <div class="slide" id="slide2">
+            <h1 class="emoji">🤔 Do you want to see it? 😊</h1>
+            <button onclick="showSurprise()">Yes</button>
+            <button onclick="sayBye()">No</button>
+        </div>
+
+        <div class="slide" id="slide3">
+            <h1 class="emoji">🎉🎂 Happy Birthday, Suyog! 🎈🎊</h1>
+        </div>
+
+        <div class="slide" id="slide4">
+            <h1 class="emoji">👋 Okei Bye! 🙃</h1>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+
+        function nextSlide() {
+            document.getElementById(`slide${currentSlide}`).classList.remove('active');
+            currentSlide++;
+            document.getElementById(`slide${currentSlide}`).classList.add('active');
+        }
+
+        function showSurprise() {
+            document.getElementById(`slide${currentSlide}`).classList.remove('active');
+            currentSlide = 3;
+            document.getElementById(`slide${currentSlide}`).classList.add('active');
+        }
+
+        function sayBye() {
+            document.getElementById(`slide${currentSlide}`).classList.remove('active');
+            currentSlide = 4;
+            document.getElementById(`slide${currentSlide}`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
